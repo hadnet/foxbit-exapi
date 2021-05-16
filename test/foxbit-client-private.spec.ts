@@ -2,13 +2,13 @@
 import 'mocha';
 import {expect} from 'chai';
 import {concatMap, mergeMap} from 'rxjs/operators';
-import {FoxBitClient} from '../src/foxbit-client';
+import {FoxBit} from '../src/foxbit-client';
 import {OrderType, PegPriceType, Side, TimeInForce, MakerTaker} from '../src/message-enums';
 import {AuthenticateResponse, SubscribeAccountEventsResponse} from '../src/message-result';
 
 describe('# FoxBit Client - Private API', function suite() {
   this.timeout('30s');
-  const client = new FoxBitClient();
+  const client = new FoxBit();
   const username = process.env.FOXBIT_LOGIN as string;
   const password = process.env.FOXBIT_PASSWORD as string;
   const code = process.env.FOXBIT_2FA_TOKEN as string;

@@ -1,11 +1,11 @@
 import {expect} from 'chai';
 import {subDays} from 'date-fns';
 import {take} from 'rxjs/operators';
-import {FoxBitClient} from '../src/foxbit-client';
+import {FoxBit} from '../src/foxbit-client';
 
 describe('# FoxBit Client - Public API', function suite() {
   this.timeout('30s');
-  const client = new FoxBitClient();
+  const client = new FoxBit();
   const omsId = 1;
 
   before(done => {
@@ -52,9 +52,9 @@ describe('# FoxBit Client - Public API', function suite() {
     expect(product).to.not.be.empty;
   });
 
-  //! There is no return from API endpoint below.
-  //! The API documentation still references GetProduct
-  //! so coud be a problem indeed or they forgot to deprecate.
+  // ! There is no return from API endpoint below.
+  // ! The API documentation still references GetProduct
+  // ! so coud be a problem indeed or they forgot to deprecate.
   // it('GetProduct by id=1 must return data', async () => {
   //   const product = await client.getProduct(omsId, 1).toPromise();
   //   expect(product).to.not.be.empty;
@@ -83,7 +83,7 @@ describe('# FoxBit Client - Public API', function suite() {
   });
 
   describe('# Events Test', function suiteEvents() {
-    this.timeout('200s');
+    this.timeout('1000s');
 
     it('SubscribeLevel1 must return data and fire Level1UpdateEvent', function thunk(done) {
       let eventCount = 0;
@@ -188,8 +188,8 @@ describe('# FoxBit Client - Public API', function suite() {
     });
 
     it('UnsubscribeTrades must be cofirmed by server', async () => {
-      const unsub = await client.unsubscribeTrades(omsId, 1).toPromise();
-      expect(unsub.result).to.be.true;
+      const res = await client.unsubscribeTrades(omsId, 1).toPromise();
+      expect(res.result).to.be.true;
     });
   });
 

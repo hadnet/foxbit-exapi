@@ -52,7 +52,7 @@ import type {
   SubscribeTradesResponse,
 } from './message-result';
 
-export class FoxBitClient {
+export class FoxBit {
   private socket!: ReconnectingWebSocket;
 
   private connectSubject!: Subject<boolean>;
