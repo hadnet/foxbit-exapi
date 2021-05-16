@@ -598,6 +598,12 @@ export interface AccountPositionResult {
 
 export interface SubscribeAccountEventsResponse {
   /**
+   * The update event name.
+   * @type {string}
+   * @memberof SubscribeAccountEventsResponse
+   */
+  kind: 'SubscribeAccountEventsResponse';
+  /**
    * Cross Product Amount on Hold from open orders
    * @type {boolean}
    * @memberof SubscribeAccountEventsResponse
@@ -605,6 +611,12 @@ export interface SubscribeAccountEventsResponse {
   Subscribed: boolean;
 }
 export interface AccountPositionEvent extends Omit<AccountPositionResult, 'TotalMonthWithdraws'> {
+  /**
+   * The update event name.
+   * @type {string}
+   * @memberof AccountPositionEvent
+   */
+  kind: 'AccountPositionEvent';
   /**
    * Cross Product Amount on Hold from open orders
    * @type {number}
@@ -644,6 +656,12 @@ export interface AccountPositionEvent extends Omit<AccountPositionResult, 'Total
 }
 
 export interface CancelOrderRejectEvent {
+  /**
+   * The update event name.
+   * @type {string}
+   * @memberof CancelOrderRejectEvent
+   */
+  kind: 'CancelOrderRejectEvent';
   /**
    * OMS Id
    * @type {number}
@@ -698,6 +716,12 @@ export interface CancelOrderRejectEvent {
 }
 
 export interface CancelReplaceOrderRejectEvent {
+  /**
+   * The update event name.
+   * @type {string}
+   * @memberof CancelReplaceOrderRejectEvent
+   */
+  kind: 'CancelReplaceOrderRejectEvent';
   /**
    * ID of the OMS
    * @type {number}
@@ -804,6 +828,12 @@ export interface CancelReplaceOrderRejectEvent {
 
 export interface MarketStateUpdate {
   /**
+   * The update event name.
+   * @type {string}
+   * @memberof MarketStateUpdate
+   */
+  kind: 'MarketStateUpdate';
+  /**
    * Exchange Id
    * @type {number}
    * @memberof MarketStateUpdate
@@ -850,6 +880,12 @@ export interface MarketStateUpdate {
 
 export interface NewOrderRejectEvent {
   /**
+   * The update event name.
+   * @type {string}
+   * @memberof NewOrderRejectEvent
+   */
+  kind: 'NewOrderRejectEvent';
+  /**
    * OMS Id
    * @type {number}
    * @memberof NewOrderRejectEvent
@@ -883,6 +919,12 @@ export interface NewOrderRejectEvent {
 
 export interface CancelAllOrdersRejectEvent {
   /**
+   * The update event name.
+   * @type {string}
+   * @memberof CancelAllOrdersRejectEvent
+   */
+  kind: 'CancelAllOrdersRejectEvent';
+  /**
    * OMS ID
    * @type {number}
    * @memberof CancelAllOrdersRejectEvent
@@ -915,6 +957,12 @@ export interface CancelAllOrdersRejectEvent {
 }
 
 export interface OrderStateEvent {
+  /**
+   * The update event name.
+   * @type {string}
+   * @memberof OrderStateEvent
+   */
+  kind: 'OrderStateEvent';
   /**
    * The side of your order.
    * @type {Side}
@@ -1003,6 +1051,12 @@ export interface OrderStateEvent {
 }
 
 export interface OrderTradeEvent {
+  /**
+   * The update event name.
+   * @type {string}
+   * @memberof OrderTradeEvent
+   */
+  kind: 'OrderTradeEvent';
   /**
    * OMS Id
    * @type {number}
@@ -1117,6 +1171,12 @@ export interface OrderTradeEvent {
 
 export interface PendingDepositUpdate {
   /**
+   * The update event name.
+   * @type {string}
+   * @memberof PendingDepositUpdate
+   */
+  kind: 'PendingDepositUpdate';
+  /**
    * Your account id number.
    * @type {number}
    * @memberof PendingDepositUpdate
@@ -1157,7 +1217,7 @@ export interface PendingDepositUpdate {
 /**
  *  Describe all possible events for SubscribeAccountEvents
  */
-export type SubscribeAccountEvent =
+export type SubscribeAccountEvents =
   | SubscribeAccountEventsResponse
   | AccountPositionEvent
   | OrderTradeEvent
@@ -1168,22 +1228,6 @@ export type SubscribeAccountEvent =
   | CancelOrderRejectEvent
   | NewOrderRejectEvent
   | CancelAllOrdersRejectEvent;
-
-/**
- * Describe all possible object response events
- * for subscribeAccountEvents function
- */
-export type SubscribeAccountEvents =
-  | (SubscribeAccountEventsResponse & {kind: string})
-  | (AccountPositionEvent & {kind: string})
-  | (OrderTradeEvent & {kind: string})
-  | (OrderStateEvent & {kind: string})
-  | (MarketStateUpdate & {kind: string})
-  | (PendingDepositUpdate & {kind: string})
-  | (CancelReplaceOrderRejectEvent & {kind: string})
-  | (CancelOrderRejectEvent & {kind: string})
-  | (NewOrderRejectEvent & {kind: string})
-  | (CancelAllOrdersRejectEvent & {kind: string});
 
 export interface AccountTradesResult {
   /**

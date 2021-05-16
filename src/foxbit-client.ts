@@ -47,7 +47,6 @@ import type {
   CancelReplaceOrderRejectEvent,
   CancelOrderRejectEvent,
   CancelAllOrdersRejectEvent,
-  SubscribeAccountEvent,
   SubscribeAccountEvents,
   SubscribeTradesResponse,
 } from './message-result';
@@ -737,46 +736,46 @@ export class FoxBit {
    */
   subscribeAccountEvents(AccountId: number, OMSId: number): Observable<SubscribeAccountEvents> {
     const endpoint = 'SubscribeAccountEvents';
-    const isAccountPositionEvent = (obj: SubscribeAccountEvent): obj is AccountPositionEvent => {
+    const isAccountPositionEvent = (obj: SubscribeAccountEvents): obj is AccountPositionEvent => {
       if ('Hold' in obj) return true;
       return false;
     };
     const isSubscribeAccountEventsResponse = (
-      obj: SubscribeAccountEvent,
+      obj: SubscribeAccountEvents,
     ): obj is SubscribeAccountEventsResponse => {
       if ('Subscribed' in obj) return true;
       return false;
     };
-    const isOrderTradeEvent = (obj: SubscribeAccountEvent): obj is OrderTradeEvent => {
+    const isOrderTradeEvent = (obj: SubscribeAccountEvents): obj is OrderTradeEvent => {
       if ('NotionalValue' in obj) return true;
       return false;
     };
-    const isOrderStateEvent = (obj: SubscribeAccountEvent): obj is OrderStateEvent => {
+    const isOrderStateEvent = (obj: SubscribeAccountEvents): obj is OrderStateEvent => {
       if ('ChangeReason' in obj) return true;
       return false;
     };
-    const isMarketStateUpdate = (obj: SubscribeAccountEvent): obj is MarketStateUpdate => {
+    const isMarketStateUpdate = (obj: SubscribeAccountEvents): obj is MarketStateUpdate => {
       if ('Action' in obj) return true;
       return false;
     };
-    const isPendingDepositUpdate = (obj: SubscribeAccountEvent): obj is PendingDepositUpdate => {
+    const isPendingDepositUpdate = (obj: SubscribeAccountEvents): obj is PendingDepositUpdate => {
       if ('AssetId' in obj) return true;
       return false;
     };
     const isCancelReplaceOrderRejectEvent = (
-      obj: SubscribeAccountEvent,
+      obj: SubscribeAccountEvents,
     ): obj is CancelReplaceOrderRejectEvent => {
       if ('ReferencePrice' in obj) return true;
       return false;
     };
     const isCancelOrderRejectEvent = (
-      obj: SubscribeAccountEvent,
+      obj: SubscribeAccountEvents,
     ): obj is CancelOrderRejectEvent => {
       if ('OrderRevision' in obj) return true;
       return false;
     };
     const isCancelAllOrdersRejectEvent = (
-      obj: SubscribeAccountEvent,
+      obj: SubscribeAccountEvents,
     ): obj is CancelAllOrdersRejectEvent => {
       if ('RejectReason' in obj && 'InstrumentId' in obj) return true;
       return false;
