@@ -91,17 +91,22 @@ export class FoxBit {
     SendOrder: new EndpointMethodDescriptor(),
     SetUserConfig: new EndpointMethodDescriptor(),
     SetUserInfo: new EndpointMethodDescriptor(),
-    SubscribeAccountEvents: new EndpointMethodDescriptor(undefined, undefined, undefined, [
-      'AccountPositionEvent',
-      'OrderTradeEvent',
-      'OrderStateEvent',
-      'MarketStateUpdate',
-      'PendingDepositUpdate',
-      'NewOrderRejectEvent',
-      'CancelReplaceOrderRejectEvent',
-      'CancelOrderRejectEvent',
-      'CancelAllOrdersRejectEvent',
-    ]),
+    SubscribeAccountEvents: new EndpointMethodDescriptor(
+      undefined,
+      EndpointMethodReplyType.ResponseAndEvent,
+      undefined,
+      [
+        'AccountPositionEvent',
+        'OrderTradeEvent',
+        'OrderStateEvent',
+        'MarketStateUpdate',
+        'PendingDepositUpdate',
+        'NewOrderRejectEvent',
+        'CancelReplaceOrderRejectEvent',
+        'CancelOrderRejectEvent',
+        'CancelAllOrdersRejectEvent',
+      ],
+    ),
     // public
     SubscribeLevel1: new EndpointMethodDescriptor(
       EndpointMethodType.Public,
@@ -206,7 +211,7 @@ export class FoxBit {
    *
    * @param {string} [url='wss://api.foxbitapi.com.br/WSGateway/']
    * @returns {Observable<boolean>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   public connect(url = 'wss://api.foxbitapi.com.br/WSGateway/'): Observable<boolean> {
     try {
@@ -231,7 +236,7 @@ export class FoxBit {
    *
    * @readonly
    * @type {boolean}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   get isConnected(): boolean {
     return this.socket && this.socket.readyState === WebSocket.OPEN;
@@ -240,7 +245,7 @@ export class FoxBit {
   /**
    * Disconnect from FoxBit websocket connection
    *
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   public disconnect(): void {
     if (this.isConnected) {
@@ -354,7 +359,7 @@ export class FoxBit {
    * **********************
    * Endpoint Type: Public
    * @returns {Observable<boolean>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   logOut(): Observable<boolean> {
     const endpoint = 'LogOut';
@@ -379,7 +384,7 @@ export class FoxBit {
    * @param {string} password The user password. The user logs into a specific Order Management
    * System via Secure Socket Layer (SSL and HTTPS).
    * @returns {Observable<AuthenticateResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   webAuthenticateUser(username: string, password: string): Observable<AuthenticateResponse> {
     const endpoint = 'WebAuthenticateUser';
@@ -409,7 +414,7 @@ export class FoxBit {
    * @param {string} code Code holds the token obtained from the other authentication source.
    * @param {string} [sessionToken] To send a session token to re-establish an interrupted session
    * @returns {Observable<AuthenticateResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   authenticate2FA(code: string, sessionToken?: string): Observable<AuthenticateResponse> {
     const endpoint = 'Authenticate2FA';
@@ -431,7 +436,7 @@ export class FoxBit {
    * Endpoint Type: Public
    * @param {string} username The name of the user, for example, jsmith.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   resetPassword(username: string): Observable<GenericResponse> {
     const endpoint = 'ResetPassword';
@@ -453,7 +458,7 @@ export class FoxBit {
    * @param {number} productId The ID of the product (often a currency) on the specified
    * Order Management System.
    * @returns {Observable<ProductResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getProduct(omsId: number, productId: number): Observable<ProductResponse> {
     const endpoint = 'GetProduct';
@@ -476,7 +481,7 @@ export class FoxBit {
    * @param {number} omsId The ID of the Order Management System from where the instrument is traded.
    * @param {number} instrumentId The ID of the instrument.
    * @returns {Observable<InstrumentResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getInstrument(omsId: number, instrumentId: number): Observable<InstrumentResponse> {
     const endpoint = 'GetInstrument';
@@ -498,7 +503,7 @@ export class FoxBit {
    * Endpoint Type: Public
    * @param {number} omsId The ID of the Order Management System on which the instruments are available.
    * @returns {Observable<InstrumentResponse[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getInstruments(omsId: number): Observable<InstrumentResponse[]> {
     const endpoint = 'GetInstruments';
@@ -518,7 +523,7 @@ export class FoxBit {
    * Endpoint Type: Public
    * @param {number} omsId The ID of the Order Management System that includes the product
    * @returns {Observable<ProductResponse[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getProducts(omsId: number): Observable<ProductResponse[]> {
     const endpoint = 'GetProducts';
@@ -541,7 +546,7 @@ export class FoxBit {
    * @param {number} [depth=100] in this call is "depth of market," the number of buyers and sellers at greater or lesser prices in
    * the order book for the instrument.
    * @returns {Observable<L2SnapshotResponse[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getL2Snapshot(
     omsId: number,
@@ -595,7 +600,7 @@ export class FoxBit {
    * @param {Date} [toDate=new Date()]
    * @param {number} [interval=60] Interval in minutes to consider tickers
    * @returns {Observable<SubscriptionTickerResponse[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getTickerHistory(
     omsId: number,
@@ -630,7 +635,7 @@ export class FoxBit {
    * @param {(number | string)} instrumentIdOrSymbol The ID of the instrument you’re tracking.
    * or The symbol of the instrument you’re tracking.
    * @returns {Observable<SubscriptionLevel1Response>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   subscribeLevel1(
     omsId: number,
@@ -669,7 +674,7 @@ export class FoxBit {
    * @param {number} depth Depth in this call is “depth of market”, the number of buyers and sellers at greater or lesser prices in
    * the order book for the instrument.
    * @returns {Observable<SubscriptionL2Response>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   subscribeLevel2(
     omsId: number,
@@ -728,7 +733,7 @@ export class FoxBit {
    * @param {number} omsId The ID of the Order Management System on which the instrument trades.
    *
    * @returns {Observable<SubscribeAccountEvents>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   subscribeAccountEvents(AccountId: number, OMSId: number): Observable<SubscribeAccountEvents> {
     const endpoint = 'SubscribeAccountEvents';
@@ -815,7 +820,7 @@ export class FoxBit {
    * Default is 60 — one minute.
    * @param {number} [includeLastCount=100] The limit of records returned in the ticker history. The default is 100.
    * @returns {Observable<SubscriptionTickerResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   subscribeTicker(
     omsId: number,
@@ -865,7 +870,7 @@ export class FoxBit {
    * subscribed to a Level 1 market data feed.
    * @param {number} instrumentId The ID of the instrument being tracked by the Level 1 market data feed.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   unsubscribeLevel1(omsId: number, instrumentId: number): Observable<GenericResponse> {
     const endpoint = 'UnsubscribeLevel1';
@@ -888,7 +893,7 @@ export class FoxBit {
    * subscribed to a Level 2 market data feed.
    * @param {number} instrumentId The ID of the instrument being tracked by the Level 2 market data feed.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   unsubscribeLevel2(omsId: number, instrumentId: number): Observable<GenericResponse> {
     const endpoint = 'UnsubscribeLevel2';
@@ -911,7 +916,7 @@ export class FoxBit {
    * subscribed to a ticker market data feed.
    * @param {number} instrumentId The ID of the instrument being tracked by the ticker market data feed.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   unsubscribeTicker(omsId: number, instrumentId: number): Observable<GenericResponse> {
     const endpoint = 'UnsubscribeTicker';
@@ -942,7 +947,7 @@ export class FoxBit {
    * Endpoint Type: Private
    * @deprecated
    * @returns {Observable<string[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getAvailablePermissionList(): Observable<string[]> {
     const endpoint = 'GetAvailablePermissionList';
@@ -963,7 +968,7 @@ export class FoxBit {
    * You can set the array of configuration pairs using **SetUserConfig**.
    *
    * @returns {Observable<Array<{ Key: string, Value: string }>>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getUserConfig(): Observable<Array<{Key: string; Value: string}>> {
     const endpoint = 'GetUserConfig';
@@ -981,7 +986,7 @@ export class FoxBit {
    * about other users
    *
    * @returns {Observable<UserInfoResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getUserInfo(): Observable<UserInfoResponse> {
     const endpoint = 'GetUserInfo';
@@ -1006,7 +1011,7 @@ export class FoxBit {
    * A user can only retrieve his own permissions; an administrator can retrieve information
    * about the permissions of others.
    * @returns {Observable<string[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getUserPermissions(userId: number): Observable<string[]> {
     const endpoint = 'GetUserPermissions';
@@ -1029,7 +1034,7 @@ export class FoxBit {
    * @param {string} userName The name of the user from whose record you’re deleting the custom key/value pair
    * @param {string} key The name of the key/value pair to delete
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   removeUserConfig(userId: number, userName: string, key: string): Observable<GenericResponse> {
     const endpoint = 'RemoveUserConfig';
@@ -1057,7 +1062,7 @@ export class FoxBit {
    * @param {{}} config array of key/value pairs. “Key” is always a string; but the associated Value of Key
    * can be of any data type.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   setUserConfig(
     userId: number,
@@ -1095,7 +1100,7 @@ export class FoxBit {
    * @param {boolean} use2FA  Set to true if this user must use two-factor authentication; set to false if
    * this user does not need to user two-factor authentication. Default is false.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   setUserInfo(
     userId: number,
@@ -1145,7 +1150,7 @@ export class FoxBit {
    * @param {number} [userId] The ID of the user whose orders are being canceled. Conditionally optional.
    * @param {number} [instrumentId] The ID of the instrument for which all orders are being cancelled. Conditionally optional.
    * @returns {Observable<UserInfoResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   cancelAllOrders(
     omsId: number,
@@ -1178,7 +1183,7 @@ export class FoxBit {
    * assigned by a company). ClientOrderId defaults to 0. Conditionally optional.
    * @param {number} [orderId] The order to be cancelled. Conditionally optional
    * @returns {Observable<UserInfoResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   cancelOrder(
     omsId: number,
@@ -1217,7 +1222,7 @@ export class FoxBit {
    * @param {number} [accountId] The ID of the account that requested the quote. Conditionally optional
    * @param {number} [instrumentId] The ID of the instrument being quoted. Conditionally optional.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   cancelQuote(
     omsId: number,
@@ -1250,7 +1255,7 @@ export class FoxBit {
    * `Note: ` CancelReplaceOrder sacrifices the order’s priority in the order book.
    * @param {CancelReplaceOrderRequest} cancelReplaceOrderReq
    * @returns {Observable<CancelReplaceOrderResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   cancelReplaceOrder(
     cancelReplaceOrderReq: CancelReplaceOrderRequest,
@@ -1273,7 +1278,7 @@ export class FoxBit {
    * @param {string} accountHandle  AccountHandle is a unique user-assigned name that is checked at create
    * time by the Order Management System. Alternate to Account ID.
    * @returns {Observable<AccountInfoResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getAccountInfo(
     omsId: number,
@@ -1304,7 +1309,7 @@ export class FoxBit {
    * @param {number} omsId  The ID of the Order Management System to which the user belongs.
    * A user will belong only to one OMS.
    * @returns {Observable<AccountPositionResult[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getAccountPositions(accountId: number, omsId: number): Observable<AccountPositionResult[]> {
     const endpoint = 'GetAccountPositions';
@@ -1335,7 +1340,7 @@ export class FoxBit {
    * (the most recent trade).
    * @param {number} count The number of trades to return. The system can return up to `200` trades.
    * @returns {Observable<AccountTradesResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getAccountTrades(
     accountId: number,
@@ -1369,7 +1374,7 @@ export class FoxBit {
    * @param {number} depth The number of transactions that will be returned, starting with
    * the most recent transaction.
    * @returns {Observable<AccountTradesResult[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getAccountTransactions(
     accountId: number,
@@ -1399,7 +1404,7 @@ export class FoxBit {
    * @param {number} omsId The ID of the Order Management System to which the user belongs.
    * A user will belong only to one OMS.
    * @returns {Observable<OpenOrdersResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getOpenOrders(accountId: number, omsId: number): Observable<OpenOrdersResult[]> {
     const endpoint = 'GetOpenOrders';
@@ -1422,7 +1427,7 @@ export class FoxBit {
    * order is not in a state to be executed, GetOpenOrders will not return it.
    * @param {SendOrderRequest} sendOrderRequest
    * @returns {Observable<SendOrderResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   sendOrder(sendOrderRequest: SendOrderRequest): Observable<SendOrderResult> {
     const endpoint = 'SendOrder';
@@ -1439,7 +1444,7 @@ export class FoxBit {
    * Fees are set and calculated by the operator of the trading venue.
    * @param {OrderFeeRequest} orderFeeRequest
    * @returns {Observable<OrderFeeResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getOrderFee(orderFeeRequest: OrderFeeRequest): Observable<OrderFeeResult> {
     const endpoint = 'GetOrderFee';
@@ -1457,7 +1462,7 @@ export class FoxBit {
    * @param {number} accountId The ID of the Order Management System where the orders were placed
    * @param {number} omsId The ID of the account whose orders will be returned
    * @returns {Observable<OrderHistoryResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getOrderHistory(accountId: number, omsId: number): Observable<OrderHistoryResult> {
     const endpoint = 'GetOrderHistory';
@@ -1481,7 +1486,7 @@ export class FoxBit {
    * other string/value pairs are optional.
    * AmountOperator must be included if an Amount value is included.
    * @returns {Observable<AllDepositTicketsResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getAllDepositTickets(
     allDepositTicketsRequest: AllDepositOrWithdrawTicketsRequest,
@@ -1518,7 +1523,7 @@ export class FoxBit {
    * you want to return. Obtain the RequestCode from **CreateWithdrawTicket** or **GetAllWithdrawTickets**.
    * @param {number} accountId The ID of the account from which the withdrawal was made.
    * @returns {Observable<AllWithdrawTicketsResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getDepositTicket(
     omsId: number,
@@ -1555,7 +1560,7 @@ export class FoxBit {
    * you want to return. Obtain the RequestCode from **CreateWithdrawTicket** or **GetAllWithdrawTickets**.
    * @param {number} accountId The ID of the account from which the withdrawal was made.
    * @returns {Observable<AllWithdrawTicketsResult>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   getWithdrawTicket(
     omsId: number,
@@ -1589,7 +1594,7 @@ export class FoxBit {
    * @param {number} [includeLastCount=100] Specifies the number of previous trades to
    * retrieve in the immediate snapshot. Default is 100.
    * @returns {Observable<SubscribeTradesResponse[]>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   subscribeTrades(
     omsId: number,
@@ -1639,7 +1644,7 @@ export class FoxBit {
    * @param {number} instrumentId The ID of the instrument being tracked by the trades
    * market data feed.
    * @returns {Observable<GenericResponse>}
-   * @memberof FoxBitClient
+   * @memberof FoxBit
    */
   unsubscribeTrades(omsId: number, instrumentId: number): Observable<GenericResponse> {
     const endpoint = 'UnsubscribeTrades';
