@@ -1,0 +1,14 @@
+{
+    "name": "Foxbit API - Documentation",
+    "entryPoints": ["./src"],
+    "out": "./docs",
+    "theme": "default",
+    "excludePrivate": true,
+    "excludeExternals": true,
+    "exclude": [
+      "./src/index.ts",
+      "./src/api-descriptors.ts",
+      "./src/log-service.ts"
+    ]
+  }
+  

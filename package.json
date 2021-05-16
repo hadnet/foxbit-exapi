@@ -1,0 +1,99 @@
+{
+  "name": "foxbit-exapi",
+  "version": "1.0.0",
+  "description": "API for FoxBit Exchange",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "tsc:build": "tsc",
+    "format": "prettier --write 'src/**/*.ts' 'src/**/*.js'",
+    "lint": "eslint --fix 'src/**/*.ts'",
+    "prepare": "npm run tsc:build && npm run docs",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "docs": "npx typedoc",
+    "test-public-api-debug": "cross-env LOG_ENABLED=true mocha --require ts-node/register test/**/*-public*.ts",
+    "test-public-api": "cross-env LOG_ENABLED=false mocha --require ts-node/register test/**/*-public*.ts",
+    "test-private-api-debug": "cross-env LOG_ENABLED=true mocha --require ts-node/register -r dotenv/config test/**/*-private*.ts",
+    "test-private-api": "cross-env LOG_ENABLED=false mocha --require ts-node/register -r dotenv/config test/**/*-private*.ts",
+    "test-debug": "cross-env LOG_ENABLED=true mocha --require ts-node/register test/**/*.ts",
+    "test": "cross-env LOG_ENABLED=false mocha --require ts-node/register test/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hadnet/hadnet.github.io-foxbit-exapi.git"
+  },
+  "keywords": [
+    "foxbit",
+    "api",
+    "foxbit-api",
+    "cyptocurrency"
+  ],
+  "author": "hadnet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hadnet/hadnet.github.io-foxbit-exapi/issues"
+  },
+  "homepage": "https://github.com/hadnet/hadnet.github.io-foxbit-exapi#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.0.2",
+    "@types/ws": "^7.4.4",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "chai": "^4.3.4",
+    "commitizen": "^4.2.4",
+    "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "4.3.6",
+    "lint-staged": "^11.0.0",
+    "mocha": "^8.4.0",
+    "prettier": "^2.3.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^9.1.1",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.2.4",
+    "typescript-eslint-parser": "^22.0.0"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "date-fns": "^2.21.3",
+    "dotenv": "^9.0.2",
+    "reconnecting-websocket": "^4.4.0",
+    "rxjs": "^6.3.3",
+    "winston": "^3.2.0",
+    "winston-daily-rotate-file": "^3.6.0",
+    "ws": "^7.4.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,json}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
