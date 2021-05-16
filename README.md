@@ -15,6 +15,6 @@ yarn add foxbit-exapi
 
 ## Documentation
 
-[Go to documentation](https://hadnet.github.io/foxbit-exapi/docs/index.html)
+[Go to documentation](https://hadnet.github.io/foxbit-exapi/index.html)
 
 
