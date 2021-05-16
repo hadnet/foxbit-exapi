@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hadnet/hadnet.github.io-foxbit-exapi.git"
+    "url": "git+https://github.com/hadnet/foxbit-exapi.git"
   },
   "keywords": [
     "foxbit",
@@ -38,9 +38,9 @@
   "author": "hadnet",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hadnet/hadnet.github.io-foxbit-exapi/issues"
+    "url": "https://github.com/hadnet/foxbit-exapi/issues"
   },
-  "homepage": "https://github.com/hadnet/hadnet.github.io-foxbit-exapi#readme",
+  "homepage": "https://github.com/hadnet/foxbit-exapi#readme",
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
