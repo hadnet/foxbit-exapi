@@ -1247,11 +1247,14 @@ export class FoxBit {
   }
 
   /**
-   * CancelReplaceOrder is single API call that both cancels an existing order and replaces it with a
-   * new order. Canceling one order and replacing it with another also cancels the order’s priority in
-   * the order book. You can use ModifyOrder to preserve priority in the book; but ModifyOrder only
-   * allows a reduction in order quantity.
+   * CancelReplaceOrder is single API call that both cancels an existing order and
+   * replaces it with a new order. Canceling one order and replacing it with another
+   * also cancels the order’s priority in the order book. You can use ModifyOrder to
+   * preserve priority in the book; but ModifyOrder only allows a reduction in order
+   * quantity.
+   *
    * `Note: ` CancelReplaceOrder sacrifices the order’s priority in the order book.
+   * @ignore The endpoint does not respond
    * @param {CancelReplaceOrderRequest} cancelReplaceOrderReq
    * @returns {Observable<CancelReplaceOrderResult>}
    * @memberof FoxBit

@@ -48,6 +48,13 @@ export enum Side {
   Unknown = 3,
 }
 
+export enum TradeSide {
+  Buy = 'Buy',
+  Sell = 'Sell',
+  Short = 'Short',
+  Unknown = 'Unknown',
+}
+
 export enum FutureSide {
   Buy = 'Buy',
   Sell = 'Sell',

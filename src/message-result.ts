@@ -19,6 +19,8 @@ import {
   WithdrawStatus,
   FutureSide,
   MarketPriceDirectionString,
+  TradeSide,
+  MakerTaker,
 } from './message-enums';
 
 export type SubscribeLevel2Response = [
@@ -1325,10 +1327,10 @@ export interface AccountTradesResult {
    * - 1 Sell
    * - 2 Short (reserved for future use)
    * - 3 Unknown (error condition)
-   * @type {Side}
+   * @type {TradeSide}
    * @memberof AccountTradesResult
    */
-  Side: Side;
+  Side: TradeSide;
 
   /**
    * The unit quantity of the trade.
@@ -1401,6 +1403,67 @@ export interface AccountTradesResult {
    * @memberof AccountTradesResult
    */
   IsBlockTrade: boolean;
+
+  /**
+   * One of the following potential sides of a trade.
+   * @type {OrderType}
+   * @memberof AccountTradesResult
+   */
+  OrderType: OrderType;
+
+  /**
+   * One of the following potential liquidity provider
+   * of a trade.
+   * @type {MakerTaker}
+   * @memberof AccountTradesResult
+   */
+  MakerTaker: MakerTaker;
+
+  /**
+   * The ID of the adapter of the overall trade.
+   * @type {number}
+   * @memberof AccountTradesResult
+   */
+  AdapterTradeId: number;
+
+  /**
+   * The best (highest) price level of the buy
+   * side of the book at the time of the trade.
+   * @type {number}
+   * @memberof AccountTradesResult
+   */
+  InsideBid: number;
+
+  /**
+   * The quantity of the best (highest) price level
+   * of the buy side of the book at the time of the trade.
+   * @type {number}
+   * @memberof AccountTradesResult
+   */
+  InsideBidSize: number;
+
+  /**
+   * The best (lowest) price level of the sell side of the book
+   * at the time of the trade.
+   * @type {number}
+   * @memberof AccountTradesResult
+   */
+  InsideAsk: number;
+
+  /**
+   * The quantity of the best (lowest) price level of the sell side
+   * of the book at the time of the trade.
+   * @type {number}
+   * @memberof AccountTradesResult
+   */
+  InsideAskSize: number;
+
+  /**
+   * If this order is a quote.
+   * @type {number}
+   * @memberof AccountTradesResult
+   */
+  IsQuote: number;
 }
 
 export interface OpenOrdersResult {

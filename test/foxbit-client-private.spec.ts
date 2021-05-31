@@ -171,7 +171,7 @@ describe('# FoxBit Client - Private API', function suite() {
         PegPriceType: PegPriceType.Last,
         LimitOffset: 2.0,
         OrderIdOCO: 0,
-        LimitPrice: 300000,
+        LimitPrice: 214000,
       })
       .subscribe(
         ({OrderId, errormsg}) => {
@@ -185,6 +185,31 @@ describe('# FoxBit Client - Private API', function suite() {
         err => done(err),
       );
   });
+
+  // it('Cancel an open order and replace it', done => {
+  //   const request = {
+  //     omsId: omsId,
+  //     orderIdToReplace: lastOrderId,
+  //     clientOrdId: Date.now(),
+  //     orderType: OrderType.Limit,
+  //     side: Side.Sell,
+  //     accountId: accountId,
+  //     instrumentId: 1, // BTCBRL
+  //     useDisplayQuantity: false,
+  //     displayQuantity: 0,
+  //     limitPrice: 207000,
+  //     stopPrice: 0,
+  //     referencePrice: 0,
+  //     pegPriceType: PegPriceType.Last,
+  //     timeInForce: TimeInForce.GTC,
+  //     orderIdOCO: 0,
+  //     quantity: 0.0001,
+  //   };
+  //   client.cancelReplaceOrder(request as unknown as CancelReplaceOrderRequest).subscribe(res => {
+  //     expect(res.ReplacementOrderId).not.to.be.null;
+  //     done();
+  //   });
+  // });
 
   it('GetOpenOrders must return data and contains latest sent order', function run(done) {
     if (!lastOrderId) {
@@ -306,6 +331,7 @@ describe('# FoxBit Client - Private API', function suite() {
   // [OK] SendOrder,
   // [OK] GetOrderFee,
   // [API ISSUE] SetUserConfig,
+  // [API ISSUE] CancelReplaceOrder
   // CancelQuote,
   // CancelReplaceOrder,
   // GetAccountInfo,
