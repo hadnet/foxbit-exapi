@@ -202,7 +202,7 @@ export interface SendOrderRequest {
    * @type {number}
    * @memberof SendOrderRequest
    */
-  LimitPrice: number;
+  LimitPrice?: number;
 
   /**
    * One *Cancels the Other* — If this order is order A, *OrderIdOCO* refers to

@@ -967,10 +967,10 @@ export interface OrderStateEvent {
   kind: 'OrderStateEvent';
   /**
    * The side of your order.
-   * @type {Side}
+   * @type {TradeSide}
    * @memberof OrderStateEvent
    */
-  Side: Side;
+  Side: TradeSide;
   /**
    * The Server-Assigned Order Id.
    * @type {number}
