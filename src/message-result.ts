@@ -1469,14 +1469,14 @@ export interface AccountTradesResult {
 export interface OpenOrdersResult {
   /**
    * The open order can be Buy or Sell.
-   * - 0 Buy
-   * - 1 Sell
-   * - 2 Short (reserved for future use)
-   * - 3 Unknown (error condition)
-   * @type {SideResponse}
+   * - Buy
+   * - Sell
+   * - Short (reserved for future use)
+   * - Unknown (error condition)
+   * @type {TradeSide}
    * @memberof OpenOrdersResult
    */
-  Side: SideResponse;
+  Side: TradeSide;
 
   /**
    * The ID of the open order. The OrderID is unique in each Order Management Systsem.
