@@ -1,4 +1,4 @@
-export enum MessageType {
+export const enum MessageType {
   Request = 0,
   Reply = 1,
   Subscribe = 2,
@@ -7,12 +7,12 @@ export enum MessageType {
   Error = 5,
 }
 
-export enum InstrumentType {
+export const enum InstrumentType {
   Unknown = 0,
   Standard = 1,
 }
 
-export enum SessionStatus {
+export const enum SessionStatus {
   Unknown = 0,
   Running = 1,
   Paused = 2,
@@ -20,73 +20,73 @@ export enum SessionStatus {
   Starting = 4,
 }
 
-export enum MarketStatus {
+export const enum MarketStatus {
   Running = 'Running',
   Paused = 'Paused',
   Stopped = 'Stopped',
   Starting = 'Starting',
 }
 
-export enum MarketStateAction {
+export const enum MarketStateAction {
   Pause = 'Pause',
   Resume = 'Resume',
   Hat = 'Halt',
   ReOpen = 'ReOpen',
 }
 
-export enum ProductType {
+export const enum ProductType {
   Unknown = 0,
   NationalCurrency = 1,
   CryptoCurrency = 2,
   Contract = 3,
 }
 
-export enum Side {
+export const enum Side {
   Buy = 0,
   Sell = 1,
   Short = 2,
   Unknown = 3,
 }
 
-export enum TradeSide {
+export const enum TradeSide {
   Buy = 'Buy',
   Sell = 'Sell',
   Short = 'Short',
   Unknown = 'Unknown',
 }
 
-export enum FutureSide {
+export const enum FutureSide {
   Buy = 'Buy',
   Sell = 'Sell',
   Short = 'Short',
 }
 
-export enum SideResponse {
+export const enum SideResponse {
   Buy = 0,
   Sell = 1,
   Short = 2,
   Unknown = 3,
 }
 
-export enum ActionType {
+export const enum ActionType {
   New = 0,
   Update = 1,
   Delete = 2,
 }
 
-export enum MarketPriceDirection {
+export const enum MarketPriceDirection {
   NoChange = 0,
   UpTick = 1,
   DownTick = 2,
 }
 
-export enum MarketPriceDirectionString {
+export const enum MarketPriceDirectionString {
   NoChange = 'NoChange',
   UpTick = 'UpTick',
   DownTick = 'DownTick',
 }
 
-export enum PegPriceType {
+export const enum PegPriceType {
   Unknown = 0,
   Last = 1,
   Bid = 2,
@@ -94,14 +94,14 @@ export enum PegPriceType {
   Midpoint = 4,
 }
 
-export enum TimeInForce {
+export const enum TimeInForce {
   Unknown = 0,
   GTC = 1,
   IOC = 2,
   FOK = 3,
 }
 
-export enum OrderType {
+export const enum OrderType {
   Unknown = 0,
   Market = 1,
   Limit = 2,
@@ -112,13 +112,13 @@ export enum OrderType {
   BlockTrade = 7,
 }
 
-export enum MakerTaker {
+export const enum MakerTaker {
   Unknown = 'Unknown',
   Maker = 'Maker',
   Taker = 'Taker',
 }
 
-export enum OrderTypeResponse {
+export const enum OrderTypeResponse {
   Unknown = 'Unknown',
   Market = 'Market',
   Limit = 'Limit',
@@ -129,7 +129,7 @@ export enum OrderTypeResponse {
   BlockTrade = 'BlockTrade',
 }
 
-export enum OrderStateResponse {
+export const enum OrderStateResponse {
   Working = 'Working',
   Rejected = 'Rejected',
   Canceled = 'Canceled',
@@ -137,7 +137,7 @@ export enum OrderStateResponse {
   FullyExecuted = 'FullyExecuted',
 }
 
-export enum ChangeReasonResponse {
+export const enum ChangeReasonResponse {
   NewInputAccepted = 'NewInputAccepted',
   NewInputRejected = 'NewInputRejected',
   OtherRejected = 'OtherRejected',
@@ -149,12 +149,12 @@ export enum ChangeReasonResponse {
   UserModified = 'UserModified',
 }
 
-export enum SendOrderStatusResponse {
+export const enum SendOrderStatusResponse {
   Accepted = 'Accepted',
   Rejected = 'Rejected',
 }
 
-export enum DepositStatus {
+export const enum DepositStatus {
   New = 0,
   AdminProcessing = 1,
   Accepted = 2,
@@ -165,7 +165,7 @@ export enum DepositStatus {
   Pending = 7,
 }
 
-export enum WithdrawStatus {
+export const enum WithdrawStatus {
   New = 0,
   AdminProcessing = 1,
   Accepted = 2,
@@ -179,7 +179,7 @@ export enum WithdrawStatus {
   Delayed = 10,
 }
 
-export enum DepositStatusResponse {
+export const enum DepositStatusResponse {
   New = 'New',
   AdminProcessing = 'AdminProcessing',
   Accepted = 'Accepted',
@@ -190,7 +190,7 @@ export enum DepositStatusResponse {
   Pending = 'Pending',
 }
 
-export enum AmountOperator {
+export const enum AmountOperator {
   TicketsEqualToAmount = 0,
   TicketsEqualOrGreaterThanAmount = 1,
   TicketsLessThanAmount = 2,
