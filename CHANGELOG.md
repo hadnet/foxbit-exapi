@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/hadnet/foxbit-exapi/compare/v1.0.4...v1.0.5) (2021-06-09)
+
+
+### Bug Fixes
+
+* add isolatedModules ([003dad4](https://github.com/hadnet/foxbit-exapi/commit/003dad48ad864b742231d7769e156ef1cfd94352))
+
 ## [1.0.4](https://github.com/hadnet/foxbit-exapi/compare/v1.0.3...v1.0.4) (2021-06-09)
 
 
