@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/hadnet/foxbit-exapi/compare/v1.0.5...v1.0.6) (2021-06-10)
+
+
+### Bug Fixes
+
+* fix Side prop of OrderStateEvent & LimitPrice of SendOrderRequest ([7ff8b48](https://github.com/hadnet/foxbit-exapi/commit/7ff8b482c5fe9210b4b3d14beade76c2925431ed))
+
 ## [1.0.5](https://github.com/hadnet/foxbit-exapi/compare/v1.0.4...v1.0.5) (2021-06-09)
 
 
