@@ -212,7 +212,7 @@ export class FoxBit {
    * @returns {Observable<boolean>}
    * @memberof FoxBit
    */
-  public connect(url = 'wss://api.foxbitapi.com.br/WSGateway/'): Observable<boolean> {
+  public connect(url = 'wss://api.foxbit.com.br/'): Observable<boolean> {
     try {
       this.connectSubject = new Subject<boolean>();
       const logEnabled = process.env.LOG_ENABLED === 'true';
